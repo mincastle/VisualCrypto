@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="VisualCryptoSrc1">
+    <serverData>
+      <paths name="VisualCryptoSrc">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/www/source" local="$PROJECT_DIR$/source" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="VisualCryptoSrc1">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/www/source1" local="$PROJECT_DIR$/source1" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

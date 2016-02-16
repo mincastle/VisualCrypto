@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Page title -->
+  <title>Visual Cryptography</title>
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
+
+  <!-- Vendor styles -->
+  <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="vendor/metisMenu/dist/metisMenu.css" />
+  <link rel="stylesheet" href="vendor/animate.css/animate.css" />
+  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="vendor/sweetalert/lib/sweet-alert.css" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+  <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/helper.css" />
+  <link rel="stylesheet" href="styles/style.css">
+
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body>
+
+
+
+<div class="content">
+
+  <div class="hpanel">
+    <div class="panel-body">
+      <form name="simpleForm" novalidate id="simpleForm" action="#" method="post">
+
+        <div class="text-center m-b-md col-lg-12" id="wizardControl">
+
+          <a class="btn btn-primary" href="#step1" data-toggle="tab"> 카드 관리 </a>
+          <a class="btn btn-default" href="#step2" data-toggle="tab"> 카드 등록 </a>
+          <a class="btn btn-default" href="#step3" data-toggle="tab"> 카드 이용 </a>
+
+        </div>
+
+        <div class="tab-content">
+          <div id="step1" class="p-m tab-pane active">
+
+            <div class="row">
+              <div class="form-horizontal">
+                <div id="serial_form" class="form-group  hide">
+                  <label class="col-lg-3 control-label">카드번호 : </label>
+                  <div class="col-lg-9"><p id="serial_num" class="form-control-static"></p></div>
+                </div>
+              </div>
+              <!--<div class="form-group col-lg-12">-->
+              <!--<div class="col-xs-12 form-group text-center">-->
+              <!--<label id="serial_num" class="hide"></label>-->
+              <!--</div>-->
+
+              <!--</div>-->
+              <div class="col-lg-12 text-center">
+                <img id="card_image" src="" style=""></img>
+              </div>
+              <div class="form-group col-lg-12">
+                <div class="text-center m-t-xs">
+                  <a class="btn btn-default" id="create_card">카드발급</a>
+                  <a class="btn btn-default hide" id="print_card">인쇄</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="step2" class="p-m tab-pane">
+            <div class="row col-lg-12">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-8">
+                <div class="col-lg-5"></div>
+                <div class="form-group col-lg-3">
+                  <div class="row">
+                    <label>카드번호 등록</label>
+                    <div class="input-group">
+                      <input type="number" value="" id="card_number" class="form-control">
+                      <span class="input-group-btn"> <button id="register_card" type="button" class="btn btn-primary">등록</button> </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4"></div>
+
+                <div id="ready">
+                  <div class="col-lg-12 text-center">
+                    <div id="txt">
+                      가지고 계신 보안카드를 좌측 상단 기준선에 정확히 맞추고 숨겨진 문자가 보이도록 사이즈를 조절히여 주십시요.
+                    </div>
+                    <br><br>
+                    <div id="slider"></div>
+                    <br><br>
+                    <img id="register_image" src="" style="float: left;"></img>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2"></div>
+            </div>
+          </div>
+
+          <div id="step3" class="tab-pane">
+            <div class="form-group col-lg-12">
+              <div class="text-center m-t-xs">
+                <a class="btn btn-default" id="show_key">인증키 생성</a>
+              </div>
+            </div>
+            <div class="row text-center m-t-lg m-b-lg">
+              <div class="col-lg-12 text-center">
+                <img id="auth_image" src="" ></img>
+              </div>
+            </div>
+
+            <div class="col-lg-2"></div>
+            <div class="row col-lg-8">
+              <div class="col-lg-5"></div>
+              <div class="col-lg-3">
+                <label id="auth_label">인증키</label>
+                <div class="input-group">
+                  <input type="number" value="" id="auth_input" class="form-control">
+                  <span class="input-group-btn"> <button id="auth_submit" type="button" class="btn btn-primary">확인</button> </span>
+                </div>
+              </div>
+              <div class="col-lg-4"></div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+
+        </div>  <!--tab-content-->
+
+
+      </form>
+    </div> <!-- panel-body -->
+
+  </div>  <!--hpanel-->
+
+</div>  <!--content-->
+
+<!-- Vendor scripts -->
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
+<script src="vendor/iCheck/icheck.min.js"></script>
+<script src="vendor/sparkline/index.js"></script>
+<script src="vendor/sweetalert/lib/sweet-alert.min.js"></script>
+
+<!-- App scripts -->
+<script src="scripts/homer.js"></script>
+
+<script>
+
+  var card_number = 0;
+  var card_new_number = 0;
+  var key = "";
+  var i_width = 0;
+  var i_height = 0;
+  var r_width = 0;
+  var r_height = 0;
+
+  document.getElementById("card_image").style.visibility="hidden";
+  //  document.getElementById("print_card").style.visibility="hidden";
+
+  document.getElementById("slider").style.visibility="hidden";
+  document.getElementById("txt").style.visibility="hidden";
+  document.getElementById("register_image").style.visibility="hidden";
+
+  document.getElementById("auth_image").style.visibility="hidden";
+  document.getElementById("auth_input").style.visibility="hidden";
+  document.getElementById("auth_submit").style.visibility="hidden";
+  document.getElementById("auth_label").style.visibility="hidden";
+
+  $('#create_card').click(function(){
+    $("#loading").show();
+    var num = parseInt(Math.random()*100000000);
+    card_new_number = num;
+    random_generation("id="+num).done(function(value) {
+      document.getElementById("card_image").src = "./cards/"+num+".png?"+Date.now();
+      document.getElementById("serial_num").innerHTML = num;
+      document.getElementById("print_card").style.visibility="visible";
+      document.getElementById("card_image").style.visibility="visible";
+      $("#loading").hide();
+      $("#serial_form").removeClass("hide");
+      $("#print_card").removeClass("hide");
+    });
+  });
+
+  $('#print_card').click(function(){
+    var image_html = "<html><head><script>function step1(){\n" +
+        "setTimeout('step2()', 10);}\n" +
+        "function step2(){window.print();window.close()}\n" +
+        "</scri" + "pt></head><body onload='step1()'>\n" +
+        "<img src='./cards/"+card_new_number+".png' /></body></html>";
+
+    var Pagelink = "about:blank";
+    var pwa = window.open(Pagelink, "_new");
+    pwa.document.open();
+    pwa.document.write(image_html);
+    pwa.document.close();
+  });
+
+
+  $('#register_card').click(function(){
+
+    card_number = parseInt(document.getElementById("card_number").value);
+    $("#loading").show();
+    register_card("id="+card_number+"&text=ok").done(function(value) {
+      document.getElementById("register_image").src = "./screen/"+card_number+"ok.png?"+Date.now();
+      document.getElementById("register_image").onload=function(){
+        i_width = document.getElementById("register_image").width;
+        i_height = document.getElementById("register_image").height;
+
+        r_width = i_width;
+        r_height = i_height;
+      };
+      document.getElementById("txt").style.visibility="visible";
+      document.getElementById("slider").style.visibility="visible";
+      document.getElementById("register_image").style.visibility="visible";
+      $( "#slider" ).slider({
+        min: 1000,
+        max: 4000,
+        value: 2500,
+        slide: function( event, ui ) {
+          var img = document.getElementById("register_image");
+          img.width =  ($( "#slider" ).slider( "values", 0 )/2500*i_width);
+          img.height = ($( "#slider" ).slider( "values", 0 )/2500*i_height);
+          r_width = img.width;
+          r_height = img.height;
+          document.getElementById("auth_image").width = r_width;
+          document.getElementById("auth_image").height = r_height;
+        }
+      });
+      $("#loading").hide();
+
+      if() {
+        var val = 2500;
+        var one = function() {
+          $("#slider").slider("value", val);
+          setTimeout(function() {
+            val = val + 1;
+            $('#slider').slider("value", val);
+            if( val < 4000 ){
+              one();
+            }
+          }, 100);
+        };
+
+        one();
+      }
+    }).fail(function(value) {
+      swal({
+        title: "실패!",
+        text: "등록할 수 없는 카드입니다!",
+        type: "error"
+      });
+    });
+  });
+
+  $('#show_key').click(function(){
+
+    key = ""+parseInt(Math.random()*9000+1000);
+    $("#loading").show();
+    show_key("id="+card_number+"&text="+key).done(function(value) {
+      document.getElementById("auth_image").style.visibility="visible";
+      document.getElementById("auth_image").src = "./screen/"+card_number+".png?"+Date.now();
+      document.getElementById("auth_image").width = r_width;
+      document.getElementById("auth_image").height = r_height;
+      document.getElementById("auth_input").style.visibility="visible";
+      document.getElementById("auth_submit").style.visibility="visible";
+      document.getElementById("auth_label").style.visibility="visible";
+      $("#loading").hide();
+    }).fail(function(value) {
+      swal({
+        title: "실패!",
+        text: "등록을 먼저 해 주십시요!",
+        type: "error"
+      });
+    });;
+  });
+
+  $('#auth_submit').click(function(){
+    if(document.getElementById("auth_input").value == key)
+    {
+      swal({
+        title: "성공!",
+        text: "인증에 성공하였습니다!",
+        type: "success"
+      });
+
+    }
+    else
+    {
+      swal({
+        title: "실패!",
+        text: "인증에 실패하였습니다!",
+        type: "error"
+      });
+    }
+  });
+
+  function random_generation(param) {
+    return $.ajax({
+      //type : 'POST',
+      type : 'GET',
+      data : param,
+      //url  : "http://www.alimtong.co.kr/source1/" + 'random_generator.php'
+      url  : "./" + 'random_generator.php'
+    });
+  }
+
+
+  function register_card(param) {
+    return $.ajax({
+      //type : 'POST',
+      type : 'GET',
+      data : param,
+      //url  : "http://www.alimtong.co.kr/source1/" + 'register_card.php'
+      url  : ".//" + 'register_card.php'
+    });
+  }
+
+
+  function show_key(param) {
+    return $.ajax({
+      //type : 'POST',
+      type : 'GET',
+      data : param,
+      //url  : "http://www.alimtong.co.kr/source1/" + 'auth_generate_card.php'
+      url  : "./" + 'auth_generate_card.php'
+    });
+  }
+
+  $(function(){
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      $('a[data-toggle="tab"]').removeClass('btn-primary');
+      $('a[data-toggle="tab"]').addClass('btn-default');
+      $(this).removeClass('btn-default');
+      $(this).addClass('btn-primary');
+    })
+
+  });
+</script>
+
+</body>
+</html>
